@@ -1,0 +1,128 @@
+<%- include("partials/header.ejs") %> 
+<style>
+    .image-thubnail{
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+<style>
+  #frm-add-book label.error{
+    color: red;
+  }
+
+</style>
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Edit Book</h1>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Edit Book</li>
+        </ol>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- general form elements disabled -->
+        <div class="card card-warning">
+          <div class="card-header">
+            <h3 class="card-title">Edit Book</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <form method="post" action="/admin/edit-book/<%= book.id %>" enctype="multipart/form-data" id="frm-add-book">
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input required value="<%= book.name %>" type="text" class="form-control" placeholder="Enter name" name="name">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Select Category</label>
+                    <select name="dd_category" required id="" class="form-control">
+                      <option value="1">Choose Category</option>
+                      <% categories.forEach(function (data) { %>
+
+                        <option <% if(book.categoryid == data.id){ %> selected <% }   %> value="<%= data.id %>"><%= data.name %></option>
+
+                      <% }) %> 
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea  required class="form-control" name="description" placeholder="Description" id="" cols="30" rows="10"><%= book.description %></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Amount</label>
+                    <input value="<%= book.amount %>" required type="number" min="1"  class="form-control" placeholder="Enter amount" name="amount">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Cover Image</label>
+                      <input required type="file" name="cover_image" class="form-control"> 
+                      <br>
+                      <img class="image-thubnail" src="<%= book.cover_image  %>" alt=""> 
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Author</label>
+                      <input value="<%= book.author %>" type="text" required name="author" class="form-control" placeholder="Enter author name">  
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Select Status</label>
+                      <select name="status" required id="" class="form-control">
+                        <option <% if(book.status == '1'){ %> selected <% }   %> value="1">Active</option>
+                        <option <% if(book.status == '0'){ %> selected <% }   %>  value="0">Inactive</option>
+                      </select>
+                    </div>
+                </div>
+              </div>
+              <button class="btn btn-dark" type="submit">Submit</button>
+            </form>
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<%- include("partials/footer.ejs") %> 
