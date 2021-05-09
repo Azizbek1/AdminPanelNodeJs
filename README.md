@@ -5,6 +5,8 @@ Node Js Admin Panel O'rnatish ushun qulanma!
 
 
 Kamandalari:
+npm i sequelize,
+npm i sequelize-cli
 1) npx sequelize init       - Yangi proyekt qiladi! (Bizga yangi ikkita papka qiladi! "config" va "models", "migrations", )
 2) Admin   : npx sequelize model:generate --name  Admin --attributes name:string,email:string,password:string
    Category: npx sequelize model:generate --name  Category --attributes name:string,status:enum
