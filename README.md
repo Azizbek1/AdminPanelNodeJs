@@ -23,7 +23,7 @@ npm i sequelize-cli
 // createBook(migration ichida) : CategoryId :  references: { model: {  tableName: 'categories' }, key: "id" }
 
 // keyin esa config.json ga kirib mysqlda yangi baza qilish kerak! 
-// keyingi kamanda npx sequelize db:migrate  : config jsonga kiradi va mysqlda jadvalarni qiladi!
+// keyingi kamanda **npx sequelize db:migrate**  : config jsonga kiradi va mysqlda jadvalarni qiladi!
 
 
 
